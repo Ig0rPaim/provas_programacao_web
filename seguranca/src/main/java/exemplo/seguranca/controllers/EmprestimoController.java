@@ -14,6 +14,7 @@ import exemplo.seguranca.config.SecurityFilter;
 import exemplo.seguranca.dtos.EmprestimoDto;
 import exemplo.seguranca.servicos.JWTokenService;
 import exemplo.seguranca.servicos.LivroService;
+import jakarta.persistence.Convert;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
 
@@ -32,14 +33,14 @@ public class EmprestimoController {
     @Autowired
     HttpServletRequest request;
     
-    @PostMapping("/emprestimos")
+    @PostMapping("")
     @Transactional
     @Secured("user_admin")
     public ResponseEntity emprestar(@RequestBody EmprestimoDto emprestimoDto){
         return livroService.emprestar(emprestimoDto);
     }
 
-    @PutMapping("/emprestimos/{id}")
+    @PutMapping("/{id}")
     @Transactional
     @Secured("user_admin")
     public ResponseEntity devolver(@PathVariable Long idLivro){
