@@ -52,32 +52,32 @@ public class LivroService {
     }
 
 
-    // public ResponseEntity emprestar(EmprestimoDto emprestimo){
-    //     try{
-    //         var livro = livroRespository.findById(emprestimo.id_livro());
-    //         if(!livro.isPresent())
-    //             return ResponseEntity.notFound().build(); 
-    //         var qtd = livro.get().getQuantidade() - 1;
-    //         // livroRespository.mudarQuantidade(qtd, emprestimo.id_livro());
-    //         livroRespository.emprestar(emprestimo.id_livro(), emprestimo.id_usuario(), 1);
-    //         return ResponseEntity.ok().build();
-    //     }catch(Exception e){
-    //         return ResponseEntity.badRequest().build();
-    //     }
-    // }
+    public ResponseEntity emprestar(EmprestimoDto emprestimo){
+        try{
+            var livro = livroRespository.findById(emprestimo.id_livro());
+            if(!livro.isPresent())
+                return ResponseEntity.notFound().build(); 
+            var qtd = livro.get().getQuantidade() - 1;
+            // livroRespository.mudarQuantidade(qtd, emprestimo.id_livro());
+            livroRespository.emprestar(emprestimo.id_livro(), emprestimo.id_usuario(), 1);
+            return ResponseEntity.ok().build();
+        }catch(Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
 
 
-    // public ResponseEntity devolver(Long id_livro, Long id_usuario){
-    //     try{
-    //         var livro = livroRespository.findById(id_livro);
-    //         if(!livro.isPresent())
-    //             return ResponseEntity.notFound().build(); 
-    //         var qtd = livro.get().getQuantidade() + 1;
-    //         // livroRespository.mudarQuantidade(qtd, id_livro);
-    //         livroRespository.devolver(0, id_livro, id_usuario);
-    //         return ResponseEntity.ok().build();
-    //     }catch(Exception e){
-    //         return ResponseEntity.badRequest().build();
-    //     }
-    // }
+    public ResponseEntity devolver(Long id_livro, Long id_usuario){
+        try{
+            var livro = livroRespository.findById(id_livro);
+            if(!livro.isPresent())
+                return ResponseEntity.notFound().build(); 
+            var qtd = livro.get().getQuantidade() + 1;
+            // livroRespository.mudarQuantidade(qtd, id_livro);
+            livroRespository.devolver(0, id_livro, id_usuario);
+            return ResponseEntity.ok().build();
+        }catch(Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }

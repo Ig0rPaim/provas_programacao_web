@@ -32,19 +32,19 @@ public class EmprestimoController {
     @Autowired
     HttpServletRequest request;
     
-    // @PostMapping("/emprestimos")
-    // @Transactional
-    // @Secured("user_admin")
-    // public ResponseEntity emprestar(@RequestBody EmprestimoDto emprestimoDto){
-    //     return livroService.emprestar(emprestimoDto);
-    // }
+    @PostMapping("/emprestimos")
+    @Transactional
+    @Secured("user_admin")
+    public ResponseEntity emprestar(@RequestBody EmprestimoDto emprestimoDto){
+        return livroService.emprestar(emprestimoDto);
+    }
 
-    // @PutMapping("/emprestimos/{id}")
-    // @Transactional
-    // @Secured("user_admin")
-    // public ResponseEntity devolver(@PathVariable Long idLivro){
-    //     var token = securityFilter.recuperarToken(request);
-    //     var claimId = tokenJWT.getId(token);
-    //     return livroService.devolver(idLivro, idLivro);
-    // }
+    @PutMapping("/emprestimos/{id}")
+    @Transactional
+    @Secured("user_admin")
+    public ResponseEntity devolver(@PathVariable Long idLivro){
+        var token = securityFilter.recuperarToken(request);
+        var claimId = tokenJWT.getId(token);
+        return livroService.devolver(idLivro, idLivro);
+    }
 }
